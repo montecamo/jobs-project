@@ -12,4 +12,5 @@ export {default as VacanciesWrapper} from './vacancies-wrapper';
 export {default as VacancyInfo} from './vacancy-info';
 export {default as VacancyOffset} from './vacancy-offset';
 export {default as Wrapper} from './wrapper';
-export {default as StyledSeparator} from './separator.js';
+export {default as StyledSeparator} from './separator';
+export {default as Expand} from './expand';
