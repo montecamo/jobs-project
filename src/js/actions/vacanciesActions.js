@@ -24,7 +24,11 @@ export function fetchVacanciesErr() {
 export function fetchVacancies(query) {
   return dispatch => {
     dispatch(fetchVacanciesStart());
-    axios.get('http://82.146.40.234/job/')
+    axios.get('http://82.146.40.234/job/search', { 
+      params: {
+        title: query
+      }
+    })
     .then((res) => {
       console.log(res);
       return res.data;

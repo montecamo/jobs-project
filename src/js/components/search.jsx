@@ -23,7 +23,10 @@ export default class Search extends Component {
   }
 
   fetchVacancies() {
-    this.props.fetchVacancies();
+    let query = this.state.text;
+    if (!query) return;
+
+    this.props.fetchVacancies(query);
   }
 
   render() {
