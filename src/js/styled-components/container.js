@@ -9,6 +9,11 @@ const Container = styled.div`
   align-items: ${props => props.align ? props.align : 'center'};
   justify-content: ${props => props.justify ? props.justify : 'center'};
   vertical-align: top;
+
+  @media screen and (max-width: 600px) {
+    ${props => props.shouldHide && 'display: none'};
+    width: 100%;
+  };
 `;
 
 export default Container;

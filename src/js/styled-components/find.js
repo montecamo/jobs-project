@@ -10,7 +10,8 @@ const Find = styled.input`
   float: right;
   font-size: 23px;
   outline: none;
-  padding: 10px 20px;
+  text-align: center;
+  padding: 10px 0;
   transition: all .5s;
   vertical-align: top;
   width: 16%;
@@ -18,6 +19,10 @@ const Find = styled.input`
     cursor: pointer;
     background: ${palette.ORANGE};
     color: ${palette.WHITE};
+  }
+  @media screen and (max-width: 730px) {
+    display: block;
+    width: 100%;
   }
 `;
 
