@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import '../css/style.css';
+import '../css/reset.css';
+import './styled-components/global-styles';
+
 import store from './containers/store';
 import Home from './components/home.jsx';
 

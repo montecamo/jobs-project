@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import initial from './initial';
+import vacanciesReducer from './vacanciesReducer';
 
 let reducer = combineReducers({
-  initial: initial
+  vacancies: vacanciesReducer 
 });
 
 export default reducer;
