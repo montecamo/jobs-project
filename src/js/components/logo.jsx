@@ -1,6 +1,8 @@
+'use strict'
+
 import React from 'react';
 
-import LogoWrapper from '../styled-components/logo-wrapper';
+import { LogoWrapper } from '../styled-components';
 
 
 const Logo = () => (

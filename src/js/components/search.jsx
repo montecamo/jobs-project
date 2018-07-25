@@ -1,10 +1,10 @@
+'use strict'
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchVacancies } from '../actions/vacanciesActions';
-import Input from '../styled-components/input';
-import SearchWrapper from '../styled-components/search-wrapper'
-import Find from '../styled-components/find';
+import { Input, SearchWrapper, Find } from '../styled-components';
 
 @connect(null, mapDispatchToProps)
 export default class Search extends Component {
