@@ -14,8 +14,10 @@ export default class Search extends Component {
     this.state = {
       text: ''
     }
+    this.input = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.fetchVacancies = this.fetchVacancies.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleChange(e) {
@@ -29,10 +31,17 @@ export default class Search extends Component {
     this.props.fetchVacancies(query);
   }
 
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.fetchVacancies();
+      this.input.current.blur();
+    }
+  }
+
   render() {
     return (
       <SearchWrapper>
-        <Input type='text' onChange={this.handleChange} />
+        <Input type='text' innerRef={this.input} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
         <Find type='submit' value='Find' onClick={this.fetchVacancies} />
       </SearchWrapper>
     )
