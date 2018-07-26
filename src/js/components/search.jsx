@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { fetchVacancies } from '../actions/vacanciesActions';
 import { Input, SearchWrapper, Find } from '../styled-components';
+import SalaryFilter from './salary-filter.jsx';
 
 @connect(null, mapDispatchToProps)
 export default class Search extends Component {
@@ -41,8 +42,13 @@ export default class Search extends Component {
   render() {
     return (
       <SearchWrapper>
-        <Input type='text' innerRef={this.input} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
+        <Input 
+          type='text'
+          innerRef={this.input}
+          onKeyPress={this.handleKeyPress}
+          onChange={this.handleChange} />
         <Find type='submit' value='Find' onClick={this.fetchVacancies} />
+        <SalaryFilter />
       </SearchWrapper>
     )
   }
@@ -52,6 +58,6 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchVacancies: (query) => {
       dispatch(fetchVacancies(query));
-    }
+    },
   }
 }

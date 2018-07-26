@@ -5,7 +5,7 @@ const Description = styled.div`
   color: grey;
   margin-bottom: 5px;
   line-height: 1.2em;
-  max-height: ${props => props.expanded ? 'auto' : '3.6em'};
+  max-height: ${props => props.expanded ? '' : '3.6em'};
   overflow: hidden;
 `;
 

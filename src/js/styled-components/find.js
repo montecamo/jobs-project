@@ -23,6 +23,7 @@ const Find = styled.input`
   @media screen and (max-width: 730px) {
     display: block;
     width: 100%;
+    float: none;
   }
 `;
 
