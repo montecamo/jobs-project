@@ -14,3 +14,4 @@ export {default as VacancyOffset} from './vacancy-offset';
 export {default as Wrapper} from './wrapper';
 export {default as StyledSeparator} from './separator';
 export {default as Expand} from './expand';
+export {default as FiltersWrapper} from './filters-wrapper';

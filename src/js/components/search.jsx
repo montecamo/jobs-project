@@ -59,7 +59,6 @@ export default class Search extends Component {
           onKeyPress={this.handleKeyPress}
           onChange={this.handleChange} />
         <Find type='submit' value='Find' onClick={this.fetchVacancies} />
-        <SalaryFilter />
       </SearchWrapper>
     )
   }

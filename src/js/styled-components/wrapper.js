@@ -5,6 +5,13 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+    flex-wrap: wrap;
+    justify-content: ;
+    align-items: center;
+  };
 `;
 
 export default Wrapper;

@@ -11,8 +11,9 @@ const Container = styled.div`
   vertical-align: top;
 
   @media screen and (max-width: 600px) {
-    ${props => props.shouldHide && 'display: none'};
+    display: flex;
     width: 100%;
+    min-height: auto;
   };
 `;
 

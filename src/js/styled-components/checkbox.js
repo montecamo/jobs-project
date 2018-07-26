@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-
-
 export const Checkmark = styled.span`
   position: absolute;
   top: 0;
@@ -35,7 +33,7 @@ export const Container = styled.label`
   padding-left: 33px;
   display: block;
   position: relative;
-  margin-top: 5px;
+  margin: 15px 0;
 `;
 
 export const CheckboxInput = styled.input`

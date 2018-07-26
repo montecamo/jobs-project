@@ -22,12 +22,14 @@ export function fetchVacanciesErr() {
   }
 }
 
-export function createGetPromise(query, filters) {
-  return axios.get('http://82.146.40.234/job/search', { 
-    params: {
-      title: query
-    }
-  });
+export function createExtendedGetPromise(query, params) {
+  let params1 = {...params, title: query};
+  let params2 = {...params, description: query};
+  return Promise.all([createGetPromise(query, params1), createGetPromise(query, params2)])
+}
+
+export function createGetPromise(query, params) {
+  return axios.get('http://82.146.40.234/job/search', {params});
 }
 
 export function fetchVacancies(query) {
@@ -35,14 +37,23 @@ export function fetchVacancies(query) {
 
   return (dispatch, getState) => {
     let { filters } = getState();
+    let params = {};
 
     dispatch(fetchVacanciesStart());
 
-    Promise.all(queries.map(query => createGetPromise(query, filters)))
+    let createPromise;
+    if (filters.extendedSearch) {
+      createPromise = createExtendedGetPromise;
+    } else {
+      createPromise = createGetPromise;
+      params.title = query;
+    }
+
+    Promise.all(queries.map(query => createPromise(query, params)))
     .then((results) => {
-      console.log(results);
-      let vacancies = [].concat.apply([], results.map((res) => res.data));
-      return filterUniqueVacancies(vacancies);
+      let temp = [].concat.apply([], results);
+      results = [].concat.apply([], temp.map((res) => res.data));
+      return filterUniqueVacancies(results);
     })
     .then((vacancies) => {
       dispatch(fetchVacanciesSuccess(vacancies));
