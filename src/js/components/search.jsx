@@ -22,11 +22,17 @@ export default class Search extends Component {
   }
 
   handleChange(e) {
-    this.setState({ text: e.target.value });
+    let text = e.target.value;
+
+    this.setState({ text: text });
+
+    if (text.length > 3) {
+      this.fetchVacancies(text);
+    }
   }
 
-  fetchVacancies() {
-    let query = this.state.text;
+  fetchVacancies(text) {
+    let query = text || this.state.text;
     if (!query) return;
 
     this.props.fetchVacancies(query);
