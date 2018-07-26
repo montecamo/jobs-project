@@ -16,3 +16,22 @@ export function convertDate(date, options) {
   return obj;
 }
 
+export function filterUniqueVacancies(array) {
+  let ids = [];
+
+  return array.filter((vacancy) => {
+    if (ids.includes(vacancy.id)) {
+      return false;
+    }
+    ids.push(vacancy.id);
+    return true;
+  })
+} 
+
+export function convertQueryToArr(query) {
+  query = query.toLowerCase().replace(/\s+/g,' ').trim();
+
+  return query.split(' ').filter((query) => {
+    return !!query;
+  });
+}
