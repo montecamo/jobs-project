@@ -1,6 +1,7 @@
 'use strict'
 
 let initialState = {
+  minSalary: null,
   salaryOnly: false,
   extended: false,
   currentPage: 1,

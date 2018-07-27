@@ -48,8 +48,10 @@ export function fetchVacancies(query) {
 
     let { filters } = getState();
     let params = {
-      page: filters.currentPage 
+      page: filters.currentPage,
     };
+
+    filters.salaryOnly ? params.salary = 0 : null;
 
     let createPromise;
     if (filters.extendedSearch) {

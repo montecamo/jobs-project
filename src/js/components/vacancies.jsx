@@ -8,14 +8,10 @@ import Separator from './separator.jsx';
 import VacanciesWrapper from '../styled-components/vacancies-wrapper';
 
 
-function renderVacancies(data, filters) {
+function renderVacancies(data) {
   let vacancies = [];
   
   data.forEach((vacancy, index) => {
-    if (filters.salaryOnly) {
-      if (!vacancy.salary) return;
-    }
-
     vacancies.push(<Vacancy key={vacancy.id} vacancy={vacancy} />)
     vacancies.push(<Separator key={Math.random()}/>);
   });
@@ -24,18 +20,17 @@ function renderVacancies(data, filters) {
   return vacancies;
 }
 
-const Vacancies = ({ vacancies, filters }) => {
+const Vacancies = ({ vacancies }) => {
   return (
     <VacanciesWrapper>
-      {renderVacancies(vacancies, filters)}
+      {renderVacancies(vacancies)}
     </VacanciesWrapper>
   )
 }
 
-const mapStateToProps = ({ vacancies, filters }) => {
+const mapStateToProps = ({ vacancies }) => {
   return { 
     vacancies: vacancies.list,
-    filters 
   };
 }
 
