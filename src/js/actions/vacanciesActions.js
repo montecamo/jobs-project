@@ -1,6 +1,6 @@
 'use strict'
 import axios from 'axios';
-import { convertQueryToArr, filterUniqueVacancies, sum } from '../containers/assets';
+import { convertQueryToArr, filterUniqueVacancies, sum, sortByDate } from '../containers/assets';
 import { setMaxPage } from './filtersActions';
 import { setVacanciesFound } from './searchActions';
 
@@ -76,6 +76,9 @@ export function fetchVacancies(query) {
       dispatch(setMaxPage(Math.max.apply(null, pagesLenghts)));
       dispatch(setVacanciesFound(sum(totalFounds)));
       return filterUniqueVacancies(results);
+    })
+    .then((vacancies) => {
+      return sortByDate(vacancies)
     })
     .then((vacancies) => {
       dispatch(fetchVacanciesSuccess(vacancies));

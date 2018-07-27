@@ -41,3 +41,15 @@ export function sum(arr) {
   arr.forEach((elem) => counter += +elem);
   return counter;
 }
+
+export function sortByDate(arr) {
+  return arr.sort((a, b) => {
+    if (a.date > b.date) {
+      return -1;
+    } else if (a.date < b.date) {
+      return 1;
+    } else {
+      return 0;
+    }
+  })
+}
