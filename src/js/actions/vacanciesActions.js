@@ -52,6 +52,7 @@ export function fetchVacancies(query) {
     };
 
     filters.salaryOnly ? params.salary = 0 : null;
+    filters.minSalary.status ? params.salary = filters.minSalary.amount : null;
 
     let createPromise;
     if (filters.extendedSearch) {

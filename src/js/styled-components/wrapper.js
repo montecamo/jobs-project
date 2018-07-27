@@ -6,12 +6,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  @media screen and (max-width: 600px) {
+  ${props => !props.preventDefault && `@media screen and (max-width: 600px) {
     display: block;
     flex-wrap: wrap;
     justify-content: ;
     align-items: center;
-  };
+  }`};
 `;
 
-export default Wrapper;
+ export default Wrapper;

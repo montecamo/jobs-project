@@ -8,6 +8,20 @@ export function toggleSalaryOnly() {
   }
 }
 
+export function toggleSalaryFilter(amount) {
+  return {
+    type: 'TOGGLE_SALARY_FILTER',
+    payload: amount
+  }
+}
+
+export function changeSalaryFilterAmount(amount) {
+  return {
+    type: 'CHANGE_SALARYFILTER_AMOUNT',
+    payload: amount
+  }
+}
+
 export function toggleExtendedSearch() {
   return {
     type: 'TOGGLE_EXTENDEDSEARCH_FILTER'

@@ -30,10 +30,11 @@ export const Container = styled.label`
   cursor: pointer;
   font-size: 21px;
   font-family: 'LatoLight', sans-serif;
+  padding: 1px;
   padding-left: 33px;
-  display: block;
+  display: ${({inline}) => inline ? 'inline-block' : 'block'};
   position: relative;
-  margin: 15px 0;
+  margin-bottom: 25px;
 `;
 
 export const CheckboxInput = styled.input`

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import * as palette from './colors';
 
 const FiltersWrapper = styled.div`
-  padding-left: 40px;
 `;
 
 export default FiltersWrapper;

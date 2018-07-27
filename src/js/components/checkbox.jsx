@@ -32,14 +32,14 @@ export default class Checkbox extends Component {
 
   render() {
     return (
-        <Container>
-          {this.props.children}
-          <CheckboxInput
-            onChange={this.handleChange}
-            defaultChecked={this.state.checked}
-            type='checkbox'/>
-          <Checkmark></Checkmark>
-        </Container>
+      <Container {...this.props}>
+        {this.props.children}
+        <CheckboxInput
+          onChange={this.handleChange}
+          defaultChecked={this.state.checked}
+          type='checkbox'/>
+        <Checkmark></Checkmark>
+      </Container>
     )
   }
 }

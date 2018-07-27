@@ -17,3 +17,5 @@ export {default as Expand} from './expand';
 export {default as FiltersWrapper} from './filters-wrapper';
 export {default as PagesWrapper} from './pages-wrapper';
 export {default as Page} from './page';
+export {default as FilterInput} from './filter-input';
+export {default as Dollar} from './dollar';

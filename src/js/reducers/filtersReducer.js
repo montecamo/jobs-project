@@ -1,7 +1,10 @@
 'use strict'
 
 let initialState = {
-  minSalary: null,
+  minSalary: {
+    status: false,
+    amount: 0
+  },
   salaryOnly: false,
   extended: false,
   currentPage: 1,
@@ -9,9 +12,18 @@ let initialState = {
 }
 
 const filtersReducer = (state=initialState, action) => {
+  let minSalary = {...state.minSalary};
   switch(action.type) {
   case 'TOGGLE_SALARYONLY_FILTER':
     state = {...state, salaryOnly: !state.salaryOnly};
+    break;
+  case 'TOGGLE_SALARY_FILTER':
+    minSalary.status = !minSalary.status
+    state = {...state};
+    break;
+  case 'CHANGE_SALARYFILTER_AMOUNT':
+    minSalary.amount = action.payload;
+    state = {...state};
     break;
   case 'TOGGLE_EXTENDEDSEARCH_FILTER':
     state = {...state, extendedSearch: !state.extendedSearch };
@@ -23,6 +35,7 @@ const filtersReducer = (state=initialState, action) => {
     state = {...state, maxPage: action.payload};
     break;
   }
+  state.minSalary = minSalary;
   return state;
 }
 
