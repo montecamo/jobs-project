@@ -29,7 +29,7 @@ export function createExtendedGetPromise(query, params) {
 }
 
 export function createGetPromise(query, params) {
-  return axios.get('http://82.146.40.234/job/search', {params});
+  return axios.get('http://159.65.200.195/job/search', {params});
 }
 
 export function fetchVacancies(query) {
