@@ -4,17 +4,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchVacancies } from '../actions/vacanciesActions';
+import { queryChange, scrollSearch } from '../actions/searchActions';
 import { Input, SearchWrapper, Find } from '../styled-components';
 import SalaryFilter from './salary-filter.jsx';
 
-@connect(null, mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Search extends Component {
   constructor() {
     super();
 
-    this.state = {
-      text: ''
-    }
     this.input = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.fetchVacancies = this.fetchVacancies.bind(this);
@@ -24,11 +22,16 @@ export default class Search extends Component {
   handleChange(e) {
     let text = e.target.value;
 
-    this.setState({ text: text });
+    this.props.queryChange(text);
 
     if (text.length > 3) {
       this.fetchVacancies(text);
     }
+  }
+
+  scroll() {
+    this.input.current.scrollIntoView();
+    this.props.stopScroll();
   }
 
   fetchVacancies(text) {
@@ -36,7 +39,7 @@ export default class Search extends Component {
     if (typeof text === 'string') {
       query = text;
     } else {
-      query = this.state.text;
+      query = this.props.query;
     }
     if (!query) return;
 
@@ -50,12 +53,19 @@ export default class Search extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.scroll) {
+      this.scroll();
+    }
+  }
+
   render() {
     return (
       <SearchWrapper>
         <Input 
           type='text'
           innerRef={this.input}
+          value={this.props.query}
           onKeyPress={this.handleKeyPress}
           onChange={this.handleChange} />
         <Find type='submit' value='Find' onClick={this.fetchVacancies} />
@@ -64,10 +74,23 @@ export default class Search extends Component {
   }
 }
 
+function mapStateToProps({ search }) {
+  return {
+    query: search.query,
+    scroll: search.scroll
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     fetchVacancies: (query) => {
       dispatch(fetchVacancies(query));
     },
+    queryChange: (query) => {
+      dispatch(queryChange(query));
+    },
+    stopScroll: () => {
+      dispatch(scrollSearch(false));
+    }
   }
 }

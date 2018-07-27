@@ -1,7 +1,7 @@
 'use strict'
 import axios from 'axios';
 import { convertQueryToArr, filterUniqueVacancies } from '../containers/assets';
-
+import { setMaxPage } from './filtersActions';
 
 export function fetchVacanciesStart() {
   return {
@@ -23,36 +23,53 @@ export function fetchVacanciesErr() {
 }
 
 export function createExtendedGetPromise(query, params) {
-  let params1 = {...params, title: query};
-  let params2 = {...params, description: query};
-  return Promise.all([createGetPromise(query, params1), createGetPromise(query, params2)])
+  return Promise.all([
+    createGetPromise(query, params),
+    createGetPromise(query, params, 'description')
+  ]);
 }
 
-export function createGetPromise(query, params) {
+export function createGetPromise(query, params, searchPlace='title') {
+  if (searchPlace === 'title') {
+    params = {...params, title: query };
+  } else if (searchPlace === 'description') {
+    params = {...params, description: query };
+  }
+
   return axios.get('http://159.65.200.195/job/search', {params});
 }
 
 export function fetchVacancies(query) {
   let queries = convertQueryToArr(query);
+  console.log(queries);
 
   return (dispatch, getState) => {
-    let { filters } = getState();
-    let params = {};
-
     dispatch(fetchVacanciesStart());
+
+    let { filters } = getState();
+    let params = {
+      page: filters.currentPage 
+    };
 
     let createPromise;
     if (filters.extendedSearch) {
       createPromise = createExtendedGetPromise;
     } else {
       createPromise = createGetPromise;
-      params.title = query;
     }
 
     Promise.all(queries.map(query => createPromise(query, params)))
     .then((results) => {
+      console.log(results);
       let temp = [].concat.apply([], results);
-      results = [].concat.apply([], temp.map((res) => res.data));
+      let pagesLenghts = [];
+      let totalFounds = [];
+      results = [].concat.apply([], temp.map((res) => {
+        pagesLenghts.push(res.headers.totalpage);
+        totalFounds.push(res.headers.totalfound);
+        return res.data;
+      }));
+      dispatch(setMaxPage(Math.max.apply(null, pagesLenghts)));
       return filterUniqueVacancies(results);
     })
     .then((vacancies) => {
