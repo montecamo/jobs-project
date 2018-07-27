@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { fetchVacancies } from '../actions/vacanciesActions';
 import { queryChange, scrollSearch } from '../actions/searchActions';
 import { Input, SearchWrapper, Find } from '../styled-components';
+import Found from './found.jsx';
 import SalaryFilter from './salary-filter.jsx';
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -69,6 +70,7 @@ export default class Search extends Component {
           onKeyPress={this.handleKeyPress}
           onChange={this.handleChange} />
         <Find type='submit' value='Find' onClick={this.fetchVacancies} />
+        <Found />
       </SearchWrapper>
     )
   }

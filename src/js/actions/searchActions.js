@@ -12,3 +12,10 @@ export function scrollSearch(type) {
     payload: type
   }
 }
+
+export function setVacanciesFound(number) {
+  return {
+    type: 'SET_VACANCIES_FOUND',
+    payload: number
+  }
+}

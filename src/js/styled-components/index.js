@@ -19,3 +19,4 @@ export {default as PagesWrapper} from './pages-wrapper';
 export {default as Page} from './page';
 export {default as FilterInput} from './filter-input';
 export {default as Dollar} from './dollar';
+export {default as FoundWrapper} from './found-wrapper';

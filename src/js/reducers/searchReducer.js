@@ -13,6 +13,9 @@ const searchReducer = (state=initialState, action) => {
   case 'SCROLL_SEARCH':
     state = {...state, scroll: action.payload};
     break;
+  case 'SET_VACANCIES_FOUND':
+    state = {...state, found: action.payload};
+    break;
   }
   return state;
 }

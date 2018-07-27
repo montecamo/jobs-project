@@ -35,3 +35,9 @@ export function convertQueryToArr(query) {
     return !!query;
   });
 }
+
+export function sum(arr) {
+  let counter = 0;
+  arr.forEach((elem) => counter += +elem);
+  return counter;
+}

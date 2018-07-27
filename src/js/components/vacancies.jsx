@@ -10,7 +10,7 @@ import VacanciesWrapper from '../styled-components/vacancies-wrapper';
 
 function renderVacancies(data) {
   let vacancies = [];
-  
+
   data.forEach((vacancy, index) => {
     vacancies.push(<Vacancy key={vacancy.id} vacancy={vacancy} />)
     vacancies.push(<Separator key={Math.random()}/>);
@@ -33,5 +33,5 @@ const mapStateToProps = ({ vacancies }) => {
     vacancies: vacancies.list,
   };
 }
-
 export default connect(mapStateToProps)(Vacancies);
+
