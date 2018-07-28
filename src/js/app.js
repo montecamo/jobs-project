@@ -11,6 +11,7 @@ import './styled-components/global-styles';
 import store from './containers/store';
 import Home from './components/home.jsx';
 
+
 render((
   <Provider store={store}>
     <Home />

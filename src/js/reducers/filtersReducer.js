@@ -5,6 +5,10 @@ let initialState = {
     status: false,
     amount: 0
   },
+  location: {
+    status: false,
+    location: ''
+  },
   salaryOnly: false,
   extended: false,
   currentPage: 1,
@@ -13,12 +17,22 @@ let initialState = {
 
 const filtersReducer = (state=initialState, action) => {
   let minSalary = {...state.minSalary};
+  let location = {...state.location};
+
   switch(action.type) {
   case 'TOGGLE_SALARYONLY_FILTER':
     state = {...state, salaryOnly: !state.salaryOnly};
     break;
   case 'TOGGLE_SALARY_FILTER':
     minSalary.status = !minSalary.status
+    state = {...state};
+    break;
+  case 'TOGGLE_LOCATION_FILTER':
+    location.status = !location.status;
+    state = {...state};
+    break;
+  case 'CHANGE_LOCATION_FILTER':
+    location.location = action.payload;
     state = {...state};
     break;
   case 'CHANGE_SALARYFILTER_AMOUNT':
@@ -36,6 +50,7 @@ const filtersReducer = (state=initialState, action) => {
     break;
   }
   state.minSalary = minSalary;
+  state.location = location;
   return state;
 }
 

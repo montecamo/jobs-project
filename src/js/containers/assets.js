@@ -53,3 +53,7 @@ export function sortByDate(arr) {
     }
   })
 }
+
+export function containsNumber(string) {
+  return /\d/.test(string);
+}
