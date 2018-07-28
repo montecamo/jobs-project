@@ -1,6 +1,7 @@
 'use strict'
+
 let initialState = {
-  type: 'light'
+  type: localStorage.getItem('theme') 
 }
 
 const themeReducer = (state=initialState, action) => {
