@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Page, PagesWrapper } from '../styled-components';
 import { switchPage } from '../actions/filtersActions';
 
-function renderPages(current, maxPage, click) {
+function renderPages(current, maxPage, click, theme) {
   let start, end;
   let pages = [];
   if (current + 2 > maxPage) {
@@ -34,7 +34,7 @@ function renderPages(current, maxPage, click) {
   }
 
   for (let i = start; i <= end; i++) {
-    pages.push(<Page onClick={click} focused={current === i} id={i} key={i}>{i}</Page>);
+    pages.push(<Page onClick={click} theme={theme} focused={current === i} id={i} key={i}>{i}</Page>);
   }
 
   return pages;
@@ -43,20 +43,21 @@ function renderPages(current, maxPage, click) {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Pages extends Component {
   render() {
-    let { currentPage, maxPage, switchPage } = this.props;
+    let { currentPage, maxPage, switchPage, theme } = this.props;
 
     return (
       <PagesWrapper>
-        {renderPages(currentPage, maxPage, switchPage)}
+        {renderPages(currentPage, maxPage, switchPage, theme)}
       </PagesWrapper>
     )
   }
 }
 
-function mapStateToProps({ filters }) {
+function mapStateToProps({ filters, theme }) {
   return {
     currentPage: filters.currentPage,
-    maxPage: filters.maxPage 
+    maxPage: filters.maxPage,
+    theme: theme.type
   }
 }
 

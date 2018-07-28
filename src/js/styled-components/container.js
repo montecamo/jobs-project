@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: ${props => props.justify ? props.justify : 'center'};
   vertical-align: top;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     display: flex;
     width: 100%;
     min-height: auto;

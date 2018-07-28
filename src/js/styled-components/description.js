@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as palette from './colors';
 
 const Description = styled.div`
-  color: grey;
+  color: ${palette.GREY};
   margin-bottom: 5px;
   line-height: 1.2em;
   max-height: ${props => props.expanded ? '' : '3.6em'};

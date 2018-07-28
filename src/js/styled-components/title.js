@@ -7,7 +7,7 @@ const Title = styled.a`
   margin-bottom: 10px;
   padding: 1px;
   display: block;
-  color: ${palette.WHITE};
+  color: ${props => props.theme === 'light' ? `${palette.BLACK2}` : `${palette.WHITE}`};
   transition: all .5s;
   &:hover {
     color: ${palette.ORANGE};

@@ -34,20 +34,23 @@ export default class LocationFilter extends Component {
   }
 
   render() {
+    let { location, theme } = this.props;
+    console.log(theme);
     return (
       <div>
         <Checkbox inline={true} onClick={this.toggleFilter}>
         <FontAwesomeIcon icon={faMapMarkerAlt} />
         </Checkbox>
-        <FilterInput placeholder='loc.' value={this.props.location} onChange={this.onChange} />
+        <FilterInput theme={theme} placeholder='loc.' value={location} onChange={this.onChange} />
       </div>
     )
   }
 }
 
-function mapStateToProps({ filters }) {
+function mapStateToProps({ filters, theme }) {
   return {
-    location: filters.location.location
+    location: filters.location.location,
+    theme: theme.type
   }
 }
 

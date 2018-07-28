@@ -5,7 +5,7 @@ const VacanciesWrapper = styled.div`
   margin-top: 50px; 
   padding-bottom: 40px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     width: 95%;
   };
 `;

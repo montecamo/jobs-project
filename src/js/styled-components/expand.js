@@ -12,7 +12,7 @@ const Expand = styled.button`
   outline: none;
   font-size: 20px;
   &:hover {
-    color: ${palette.WHITE};
+    color: ${props => props.theme === 'light' ? `${palette.BLACK2}` : `${palette.WHITE}`};
     cursor: pointer;
   }
 `;

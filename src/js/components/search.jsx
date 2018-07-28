@@ -61,12 +61,14 @@ export default class Search extends Component {
   }
 
   render() {
+    let { query, theme } = this.props;
     return (
       <SearchWrapper>
         <Input 
           type='text'
+          theme={theme}
           innerRef={this.input}
-          value={this.props.query}
+          value={query}
           onKeyPress={this.handleKeyPress}
           onChange={this.handleChange} />
         <Find type='submit' value='Find' onClick={this.fetchVacancies} />
@@ -76,10 +78,11 @@ export default class Search extends Component {
   }
 }
 
-function mapStateToProps({ search }) {
+function mapStateToProps({ search, theme }) {
   return {
     query: search.query,
-    scroll: search.scroll
+    scroll: search.scroll,
+    theme: theme.type
   }
 }
 

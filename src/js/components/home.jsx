@@ -11,8 +11,8 @@ import Pages from './pages.jsx';
 import { Main, Container, Wrapper } from '../styled-components';
 
 
-const Home = () => (
-  <Main>
+const Home = (props) => (
+  <Main theme={props.theme}>
     <Wrapper>
     <Container column justify='flex-start' width='25%'>
       <Logo />
@@ -27,4 +27,10 @@ const Home = () => (
   </Main>
 );
 
-export default Home;
+const mapStateToProps = ({ theme }) => {
+  return {
+    theme: theme.type
+  }
+}
+
+export default connect(mapStateToProps)(Home);

@@ -6,10 +6,15 @@ const LogoWrapper = styled.p`
   color: ${palette.ORANGE};
   font-size: 150px;
   font-family: 'Baiti', sans-serif;
-  padding-top: -35px;
-  @media screen and (max-width: 600px) {
+  padding-bottom: 35px;
+  cursor: pointer;
+  transition: all .5s;
+  @media screen and (max-width: 700px) {
     font-size: 24px;
-  }
+  };
+  &:hover {
+    color: ${props => props.theme === 'light' ? `${palette.BLACK1}` : `${palette.WHITE}`};
+  };
 `;
 
 export default LogoWrapper;

@@ -8,7 +8,7 @@ const Page = styled.button`
   background: ${props => props.focused ? 'transparent' : `${palette.ORANGE}`};
   display: inline-block;
   box-sizing: border-box; 
-  color: ${palette.WHITE};
+  color: ${props => props.theme === 'light' ? `${palette.BLACK2}` : `${palette.WHITE}`};
   font-family: 'Lato', sans-serif;
   transition: all .5s;
   outline: none;
@@ -23,7 +23,7 @@ const Page = styled.button`
     background: transparent;
   }
   $:active {
-    border: 1px solid ${palette.WHITE};
+    border: 1px solid ${props => props.theme === 'light' ? `${palette.WHITE}` : `${palette.BLACK2}`};
   }
 `;
 

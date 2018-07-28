@@ -28,20 +28,22 @@ export default class SalaryFilter extends Component {
   }
 
   render() {
+    let { amount, theme } = this.props;
     return (
       <div>
         <Checkbox inline={true} onClick={this.toggleFilter}>
           min $
         </Checkbox>
-        <FilterInput placeholder='0' value={this.props.amount} onChange={this.onChange} />
+        <FilterInput theme={theme} placeholder='0' value={amount} onChange={this.onChange} />
       </div>
     )
   }
 }
 
-function mapStateToProps({ filters }) {
+function mapStateToProps({ filters, theme }) {
   return {
-    amount: filters.minSalary.amount
+    amount: filters.minSalary.amount,
+    theme: theme.type
   }
 }
 

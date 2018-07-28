@@ -5,7 +5,7 @@ const SearchWrapper = styled.div`
   vertical-align: top;
   width: 80%;
   margin: 50px 0;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     width: 95%;
   };
 `;
