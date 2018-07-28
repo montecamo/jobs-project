@@ -8,6 +8,7 @@ import Vacancies from './vacancies.jsx';
 import Logo from './logo.jsx';
 import Filters from './filters.jsx';
 import Pages from './pages.jsx';
+import Info from './info.jsx';
 import { Main, Container, Wrapper } from '../styled-components';
 import { getTheme } from '../actions/themeActions';
 
@@ -28,6 +29,7 @@ export default class Home extends Component {
         <Container justify='flex-start' column width='70%'>
           <Search />
           <Vacancies />
+          <Info />
           <Pages />
         </Container>
         </Wrapper>

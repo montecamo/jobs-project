@@ -2,7 +2,8 @@
 
 let initialState = {
   query: '',
-  scroll: false
+  scroll: false,
+  found: null 
 }
 
 const searchReducer = (state=initialState, action) => {

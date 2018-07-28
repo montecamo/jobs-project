@@ -20,3 +20,4 @@ export {default as Page} from './page';
 export {default as FilterInput} from './filter-input';
 export {default as Dollar} from './dollar';
 export {default as FoundWrapper} from './found-wrapper';
+export {default as InfoWrapper} from './info-wrapper';
