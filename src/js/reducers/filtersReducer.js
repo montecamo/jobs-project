@@ -3,7 +3,7 @@
 let initialState = {
   minSalary: {
     status: false,
-    amount: 0
+    amount: '' 
   },
   location: {
     status: false,

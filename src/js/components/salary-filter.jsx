@@ -5,14 +5,11 @@ import Checkbox from './checkbox.jsx';
 import { FilterInput, Dollar } from '../styled-components';
 import { toggleSalaryFilter, changeSalaryFilterAmount } from '../actions/filtersActions';
 
+
 @connect(mapStateToProps, mapDispatchToProps)
 export default class SalaryFilter extends Component {
   constructor() {
     super();
-
-    this.state = {
-      value: 0
-    };
 
     this.onChange = this.onChange.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
@@ -27,7 +24,7 @@ export default class SalaryFilter extends Component {
   }
 
   toggleFilter() {
-    this.props.toggleSalaryFilter(this.state.value);
+    this.props.toggleSalaryFilter(this.props.amount);
   }
 
   render() {
@@ -36,7 +33,7 @@ export default class SalaryFilter extends Component {
         <Checkbox inline={true} onClick={this.toggleFilter}>
           min $
         </Checkbox>
-        <FilterInput value={this.props.amount} onChange={this.onChange} />
+        <FilterInput placeholder='0' value={this.props.amount} onChange={this.onChange} />
       </div>
     )
   }
