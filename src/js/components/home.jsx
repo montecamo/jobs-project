@@ -9,7 +9,7 @@ import Logo from './logo.jsx';
 import Filters from './filters.jsx';
 import Pages from './pages.jsx';
 import Info from './info.jsx';
-import { Main, Container, Wrapper } from '../styled-components';
+import { Main, Container1, Container2, Wrapper } from '../styled-components';
 import { getTheme } from '../actions/themeActions';
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -22,16 +22,16 @@ export default class Home extends Component {
     return (
       <Main theme={this.props.theme}>
         <Wrapper>
-        <Container column justify='flex-start' width='25%'>
+        <Container2  width='25%'>
           <Logo />
           <Filters />
-        </Container>
-        <Container justify='flex-start' column width='70%'>
+        </Container2>
+        <Container1 width='70%'>
           <Search />
           <Vacancies />
           <Info />
           <Pages />
-        </Container>
+        </Container1>
         </Wrapper>
       </Main>
     )

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container1 = styled.div`
   display: inline-flex;
   width: ${props => props.width ? props.width : '50%'};
-  ${props => props.column && 'flex-direction: column'};
+  flex-direction: column;
   margin-left: ${props => props.marginLeft && props.marginLeft};
   min-height: 100%;
   align-items: ${props => props.align ? props.align : 'center'};
-  justify-content: ${props => props.justify ? props.justify : 'center'};
+  justify-content: flex-start;
   vertical-align: top;
 
   @media screen and (max-width: 700px) {
@@ -17,4 +17,12 @@ const Container = styled.div`
   };
 `;
 
-export default Container;
+export const Container2 = Container1.extend`
+  @media screen and (max-width: 700px) {
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: auto;
+  };
+`;

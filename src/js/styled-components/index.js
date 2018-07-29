@@ -1,4 +1,4 @@
-export {default as Container} from './container';
+export {Container1, Container2} from './container';
 export {default as DateWrapper} from './date-wrapper';
 export {default as Description} from './description';
 export {default as Find} from './find';
@@ -21,3 +21,5 @@ export {default as FilterInput} from './filter-input';
 export {default as Dollar} from './dollar';
 export {default as FoundWrapper} from './found-wrapper';
 export {default as InfoWrapper} from './info-wrapper';
+export {default as FiltersButton} from './filters-button';
+export {default as StyledFilters} from './styled-filters';

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 
   ${props => !props.preventDefault && `@media screen and (max-width: 700px) {
     display: block;
+    ${props => props.shouldHide && 'display: none'};
     flex-wrap: wrap;
     justify-content: ;
     align-items: center;
