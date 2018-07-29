@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const Page = styled.button`
+export const Page = styled.button`
   width: 25px;
   height: 25px;
   border: 1px solid ${palette.ORANGE};
@@ -26,5 +26,3 @@ const Page = styled.button`
     border: 1px solid ${props => props.theme === 'light' ? `${palette.WHITE}` : `${palette.BLACK2}`};
   }
 `;
-
-export default Page;

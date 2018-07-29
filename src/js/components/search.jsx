@@ -1,13 +1,14 @@
 'use strict'
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchVacancies } from '../actions/vacanciesActions';
 import { queryChange, scrollSearch } from '../actions/searchActions';
+import { changePage } from '../actions/filtersActions';
 import { Input, SearchWrapper, Find } from '../styled-components';
 import Found from './found.jsx';
 import SalaryFilter from './salary-filter.jsx';
+
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Search extends Component {
@@ -21,12 +22,12 @@ export default class Search extends Component {
   }
 
   handleChange(e) {
-    let text = e.target.value;
+    let { value } = e.target;
 
-    this.props.queryChange(text);
+    this.props.queryChange(value);
 
-    if (text.length > 3) {
-      this.fetchVacancies(text);
+    if (value.length > 3) {
+      this.fetchVacancies(value);
     }
   }
 
@@ -42,7 +43,7 @@ export default class Search extends Component {
     } else {
       query = this.props.query;
     }
-    if (!query) return;
+    //if (!query) return;
 
     this.props.fetchVacancies(query);
   }
@@ -65,7 +66,6 @@ export default class Search extends Component {
     return (
       <SearchWrapper>
         <Input 
-          type='text'
           theme={theme}
           innerRef={this.input}
           value={query}
@@ -90,6 +90,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchVacancies: (query) => {
       dispatch(fetchVacancies(query));
+      dispatch(changePage(1));
     },
     queryChange: (query) => {
       dispatch(queryChange(query));

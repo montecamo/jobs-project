@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const FiltersButton = styled.button`
+export const FiltersButton = styled.button`
   width: 40px;
   height: 40px;
   background: transparent;
@@ -61,5 +61,3 @@ const FiltersButton = styled.button`
     display: none;
   }
 `;
-
-export default FiltersButton;

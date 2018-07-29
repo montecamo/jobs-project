@@ -1,11 +1,10 @@
 'use strict'
-
 import React from 'react';
 import { connect } from 'react-redux';
 
 import Vacancy from './vacancy.jsx';
 import Separator from './separator.jsx';
-import VacanciesWrapper from '../styled-components/vacancies-wrapper';
+import { VacanciesWrapper } from '../styled-components';
 
 
 function renderVacancies(data) {
@@ -33,5 +32,5 @@ const mapStateToProps = ({ vacancies }) => {
     vacancies: vacancies.list,
   };
 }
-export default connect(mapStateToProps)(Vacancies);
 
+export default connect(mapStateToProps)(Vacancies);

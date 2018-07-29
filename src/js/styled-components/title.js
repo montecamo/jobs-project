@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const Title = styled.a`
+export const Title = styled.a`
   font-size: 24px;
   text-decoration: none;
   margin-bottom: 10px;
@@ -14,5 +14,3 @@ const Title = styled.a`
     cursor: pointer;
   }
 `;
-
-export default Title;

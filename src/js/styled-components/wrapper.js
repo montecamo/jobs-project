@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 1200px;
   width: 100%;
   display: flex;
@@ -14,5 +14,3 @@ const Wrapper = styled.div`
     align-items: center;
   }`};
 `;
-
- export default Wrapper;

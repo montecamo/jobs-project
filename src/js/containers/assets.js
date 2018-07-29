@@ -30,6 +30,9 @@ export function filterUniqueVacancies(array) {
 
 export function convertQueryToArr(query) {
   query = query.toLowerCase().replace(/\s+/g,' ').trim();
+  if (!query) {
+    return [''];
+  }
 
   return query.split(' ').filter((query) => {
     return !!query;

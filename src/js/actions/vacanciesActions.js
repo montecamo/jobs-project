@@ -42,19 +42,17 @@ export function createGetPromise(query, params, searchPlace='title') {
 
 export function fetchVacancies(query) {
   let queries = convertQueryToArr(query);
-  console.log(queries);
 
   return (dispatch, getState) => {
     dispatch(fetchVacanciesStart());
 
+    let params = {};
     let { filters } = getState();
-    let params = {
-      page: filters.currentPage,
-    };
 
+    params.page = filters.currentPage
     filters.salaryOnly ? params.salary = 0 : null;
     filters.minSalary.status ? params.salary = filters.minSalary.amount : null;
-    filters.location.status ? params.location = filters.location.location : null;
+    filters.location.status ? params.location = filters.location.place : null;
 
     let createPromise;
     if (filters.extendedSearch) {
@@ -65,17 +63,19 @@ export function fetchVacancies(query) {
 
     Promise.all(queries.map(query => createPromise(query, params)))
     .then((results) => {
-      console.log(results);
       let temp = [].concat.apply([], results);
+
       let pagesLenghts = [];
-      let totalFounds = [];
+      let totalFound = [];
+
       results = [].concat.apply([], temp.map((res) => {
         pagesLenghts.push(res.headers.totalpage);
-        totalFounds.push(res.headers.totalfound);
+        totalFound.push(res.headers.totalfound);
         return res.data;
       }));
+
       dispatch(setMaxPage(Math.max.apply(null, pagesLenghts)));
-      dispatch(setVacanciesFound(sum(totalFounds)));
+      dispatch(setVacanciesFound(sum(totalFound)));
       return filterUniqueVacancies(results);
     })
     .then((vacancies) => {

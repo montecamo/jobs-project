@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const Expand = styled.button`
+export const Expand = styled.button`
   color: ${palette.ORANGE};
   text-align: center;
   background: transparent;
@@ -16,5 +16,3 @@ const Expand = styled.button`
     cursor: pointer;
   }
 `;
-
-export default Expand;

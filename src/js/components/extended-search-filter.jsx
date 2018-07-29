@@ -1,16 +1,18 @@
+'use strict'
 import React from 'react';
 import { connect } from 'react-redux';
 
 import Checkbox from './checkbox.jsx';
 import { toggleExtendedSearch } from '../actions/filtersActions';
 
-const ExtendedSearchFilter = (props) => (
-  <Checkbox onClick={props.toggleExtendedSearchFilter}>extended search</Checkbox>
+
+const ExtendedSearchFilter = ({ toggleFilter }) => (
+  <Checkbox innerOnClick={toggleFilter}>extended search</Checkbox>
 )
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleExtendedSearchFilter: (e) => {
+    toggleFilter: () => {
       dispatch(toggleExtendedSearch());
     }
   }

@@ -1,3 +1,4 @@
+'use strict'
 import React, { Component } from 'react';
 
 import { Container, CheckboxInput, Checkmark } from '../styled-components/checkbox';
@@ -15,7 +16,7 @@ export default class Checkbox extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange() {
+  handleChange(e) {
     this.onClick()
     this.setState((prevState) => {
       return {
@@ -24,10 +25,9 @@ export default class Checkbox extends Component {
     });
   }
 
-  onClick() {
-    if(this.props.onClick) {
-      this.props.onClick();
-    }
+  onClick(e) {
+    let { innerOnClick } = this.props;
+    innerOnClick ? innerOnClick() : null;
   }
 
   render() {

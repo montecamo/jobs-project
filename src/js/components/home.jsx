@@ -1,5 +1,4 @@
 'use strict'
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -12,6 +11,7 @@ import Info from './info.jsx';
 import { Main, Container1, Container2, Wrapper } from '../styled-components';
 import { getTheme } from '../actions/themeActions';
 
+
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Home extends Component { 
   componentDidMount() {
@@ -22,16 +22,16 @@ export default class Home extends Component {
     return (
       <Main theme={this.props.theme}>
         <Wrapper>
-        <Container2  width='25%'>
-          <Logo />
-          <Filters />
-        </Container2>
-        <Container1 width='70%'>
-          <Search />
-          <Vacancies />
-          <Info />
-          <Pages />
-        </Container1>
+          <Container2  width='25%'>
+            <Logo />
+            <Filters />
+          </Container2>
+          <Container1 width='70%'>
+            <Search />
+            <Vacancies />
+            <Info />
+            <Pages />
+          </Container1>
         </Wrapper>
       </Main>
     )

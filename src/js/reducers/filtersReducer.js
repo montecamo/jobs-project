@@ -7,7 +7,7 @@ let initialState = {
   },
   location: {
     status: false,
-    location: ''
+    place: ''
   },
   salaryOnly: false,
   extended: false,
@@ -32,7 +32,7 @@ const filtersReducer = (state=initialState, action) => {
     state = {...state};
     break;
   case 'CHANGE_LOCATION_FILTER':
-    location.location = action.payload;
+    location.place = action.payload;
     state = {...state};
     break;
   case 'CHANGE_SALARYFILTER_AMOUNT':

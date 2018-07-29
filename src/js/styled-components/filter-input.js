@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const FilterInput = styled.input`
-  width: 80px;
+export const FilterInput = styled.input`
+  width: ${props => props.width ? props.width : '80px'};
   background: transparent;
   box-sizing: border-box;
   border: 0;
@@ -14,5 +14,3 @@ const FilterInput = styled.input`
   font-family: 'LatoLight', sans-serif;
   transition: all .5s;
 `;
-
-export default FilterInput;

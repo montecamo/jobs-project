@@ -6,7 +6,7 @@ import { StyledSeparator } from '../styled-components';
 
 
 const Separator = (props) => (
-  <StyledSeparator theme={props.theme}></StyledSeparator>
+  <StyledSeparator {...props}></StyledSeparator>
 );
 
 const mapStateToProps = ({ theme }) => {

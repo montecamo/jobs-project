@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const FiltersWrapper = styled.div`
+export const FiltersWrapper = styled.div`
   max-width: 1200px;
   width: 100%;
   display: flex;
@@ -20,5 +20,3 @@ const FiltersWrapper = styled.div`
     background: ${props => props.theme === 'light' ? `${palette.WHITE}` : `${palette.BLACK1}`};
   }
 `;
-
-export default FiltersWrapper;

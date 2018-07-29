@@ -1,5 +1,4 @@
 'use strict'
-
 import { combineReducers } from 'redux';
 
 import vacanciesReducer from './vacanciesReducer';

@@ -1,3 +1,4 @@
+'use strict'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -6,7 +7,6 @@ import SalaryOnlyFilter from './salary-only-filter.jsx';
 import ExtendedSearchFilter from './extended-search-filter.jsx';
 import SalaryFilter from './salary-filter.jsx';
 import LocationFilter from './location-filter.jsx';
-import Separator from './separator.jsx';
 
 @connect(mapStateToProps)
 export default class Filters extends Component { 
@@ -28,10 +28,11 @@ export default class Filters extends Component {
   }
 
   render() {
+    let { active } = this.state;
     return (
       <Wrapper>
-        <FiltersButton active={this.state.active} onClick={this.toggle}><span></span></FiltersButton>
-        <FiltersWrapper theme={this.props.theme} active={this.state.active}>
+        <FiltersButton active={active} onClick={this.toggle}><span></span></FiltersButton>
+        <FiltersWrapper theme={this.props.theme} active={active}>
           <StyledFilters>
             <SalaryOnlyFilter /> 
             <ExtendedSearchFilter />

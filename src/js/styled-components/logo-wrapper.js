@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const LogoWrapper = styled.p`
+export const LogoWrapper = styled.p`
   box-sizing: border-box;
   color: ${palette.ORANGE};
   font-size: 150px;
@@ -20,5 +20,3 @@ const LogoWrapper = styled.p`
     color: ${props => props.theme === 'light' ? `${palette.BLACK1}` : `${palette.WHITE}`};
   };
 `;
-
-export default LogoWrapper;

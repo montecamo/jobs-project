@@ -43,12 +43,16 @@ export function toggleExtendedSearch() {
   }
 }
 
+export function changePage(to) {
+  return({
+    type: 'SWITCH_PAGE',
+    payload: to
+  });
+}
+
 export function switchPage(to) {
   return (dispatch, getState) => {
-    dispatch({
-      type: 'SWITCH_PAGE',
-      payload: to
-    });
+    dispatch(changePage(to));
 
     let { query } = getState().search;
     dispatch(fetchVacancies(query));

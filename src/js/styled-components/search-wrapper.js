@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SearchWrapper = styled.div`
+export const SearchWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
   width: 80%;
@@ -9,5 +9,3 @@ const SearchWrapper = styled.div`
     width: 95%;
   };
 `;
-
-export default SearchWrapper;

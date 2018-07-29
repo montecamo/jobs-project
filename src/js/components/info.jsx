@@ -1,3 +1,4 @@
+'use strict'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -5,21 +6,25 @@ import { faSpinner, faSpin } from '@fortawesome/free-solid-svg-icons';
 
 import { InfoWrapper } from '../styled-components';
 
+
 const Info = ({ state, theme, vacancies, found }) => {
-  let value;
-  if (typeof found === 'number' && found === 0) {
-    value = '404';
-  } else if(vacancies.length === 0) {
-    value = 'Your future job is near';
+  let title;
+  switch(state) {
+  case 'loading':
+    title = <FontAwesomeIcon className='fa-spin' icon={faSpinner} />;
+    break;
+  case 'err':
+    title = 'Err.';
+    break;
+  case 'welcome':
+    title = 'Your future job is near';
+    break;
+  case 'not-found':
+    title = '404';
+    break;
   }
 
-  if(state === 'loading') {
-    value = <FontAwesomeIcon className='fa-spin' icon={faSpinner} />;
-  } else if(state === 'err') {
-    value = 'Err.';
-  }
-
-  return <InfoWrapper theme={theme}>{value}</InfoWrapper>
+  return <InfoWrapper theme={theme}>{title}</InfoWrapper>
 }
 
 const mapStateToProps = ({ theme, search, vacancies }) => {

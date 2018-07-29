@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const Find = styled.input`
+export const Find = styled.input`
   border: 1px solid ${palette.ORANGE};
   background: transparent;
   box-sizing: border-box;
@@ -26,5 +26,3 @@ const Find = styled.input`
     float: none;
   }
 `;
-
-export default Find;

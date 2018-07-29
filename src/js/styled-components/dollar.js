@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const Dollar = styled.div`
+export const Dollar = styled.div`
   color: ${palette.ORANGE};
   display: inline-block;
   font-size: 19px;
@@ -9,5 +9,3 @@ const Dollar = styled.div`
   text-align: center;
   border: 1px solid transparent; 
 `;
-
-export default Dollar;

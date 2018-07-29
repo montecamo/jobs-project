@@ -1,3 +1,4 @@
+'use strict'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -17,21 +18,20 @@ export default class SalaryFilter extends Component {
   
   onChange(e) {
     let { value } = e.target;
-    console.log(isNaN(+value));
     if (isNaN(+value)) return;
 
     this.props.changeAmount(value);
   }
 
   toggleFilter() {
-    this.props.toggleSalaryFilter(this.props.amount);
+    this.props.toggleFilter(this.props.amount);
   }
 
   render() {
     let { amount, theme } = this.props;
     return (
       <div>
-        <Checkbox inline={true} onClick={this.toggleFilter}>
+        <Checkbox inline={true} innerOnClick={this.toggleFilter}>
           min $
         </Checkbox>
         <FilterInput theme={theme} placeholder='0' value={amount} onChange={this.onChange} />
@@ -49,11 +49,11 @@ function mapStateToProps({ filters, theme }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    toggleSalaryFilter: (value) => {
-      dispatch(toggleSalaryFilter(value));
+    toggleFilter: (amount) => {
+      dispatch(toggleSalaryFilter(amount));
     },
-    changeAmount: (value) => {
-      dispatch(changeSalaryFilterAmount(value));
+    changeAmount: (amount) => {
+      dispatch(changeSalaryFilterAmount(amount));
     }
   }
 }

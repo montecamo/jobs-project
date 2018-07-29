@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-const SalaryFilterWrapper = styled.div`
+export const SalaryFilterWrapper = styled.div`
   margin: 25px;
 `;
-
-export default SalaryFilterWrapper;

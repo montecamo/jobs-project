@@ -1,17 +1,21 @@
 'use strict'
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 
-import { Wrapper, Expand, VacancyOffset, VacancyInfo, Salary, Description, DateWrapper, Title } from '../styled-components';
+import { 
+  Wrapper, Expand, VacancyOffset, VacancyInfo, Salary, Description,
+  DateWrapper, Title 
+} from '../styled-components';
 import { convertDate } from '../containers/assets';
+
 
 @connect(mapStateToProps)
 export default class Vacancy extends Component {
   constructor() {
     super();
+
     this.state = {
       expanded: false
     }

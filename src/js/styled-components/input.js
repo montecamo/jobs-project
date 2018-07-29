@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as palette from './colors';
 
-const Input = styled.input`
+export const Input = styled.input`
   background: transparent;
   box-sizing: border-box;
   border: 1px solid ${props => props.theme === 'light' ? `${palette.BLACK2}` : `${palette.WHITE}`};
@@ -18,5 +18,3 @@ const Input = styled.input`
     margin-bottom: 10px;
   }
 `;
-
-export default Input;
