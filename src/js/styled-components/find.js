@@ -12,6 +12,7 @@ export const Find = styled.input`
   outline: none;
   text-align: center;
   padding: 10px 0;
+  padding-bottom: 9px;
   transition: all .5s;
   vertical-align: top;
   width: 16%;

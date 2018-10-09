@@ -28,8 +28,8 @@ export default class Home extends Component {
           </Container2>
           <Container1 width='70%'>
             <Search />
-            <Vacancies />
             <Info />
+            <Vacancies />
             <Pages />
           </Container1>
         </Wrapper>

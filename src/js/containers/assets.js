@@ -45,16 +45,13 @@ export function sum(arr) {
   return counter;
 }
 
-export function sortByDate(arr) {
-  return arr.sort((a, b) => {
-    if (a.date > b.date) {
-      return -1;
-    } else if (a.date < b.date) {
-      return 1;
-    } else {
-      return 0;
-    }
-  })
+export function sortByDate(arr, dateField) {
+  console.log('before', arr);
+  arr = arr.sort((a, b) => (
+    Date.parse(b[dateField]) - Date.parse(a[dateField])
+  ));
+  console.log('after', arr);
+  return arr;
 }
 
 export function containsNumber(string) {

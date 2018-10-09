@@ -32,17 +32,17 @@ export default class Vacancy extends Component {
 
   render() {
     let { theme, vacancy } = this.props;
-    let { title, company, url, date, location, salary, currency, description } = vacancy;
+    let { title, company, link, updated, location, salary, currency, snippet } = vacancy;
    
-    let Desc = ReactHtmlParser(description);
-    let { month, day } = convertDate(date, {day: true, month: true});
+    let Desc = ReactHtmlParser(snippet);
+    let { month, day } = convertDate(updated, {day: true, month: true});
 
     return (
       <div>
-        <Title theme={theme} href={url}>{title}</Title>
+        <Title theme={theme} href={link}>{title}</Title>
         <VacancyOffset>
           <VacancyInfo theme={theme} className='info'>{`${company} - ${location}`}</VacancyInfo>
-          {salary && <Salary className='salary'>{`${salary} ${currency}`}</Salary>}
+          {salary && <Salary className='salary'>{salary}</Salary>}
           <Description expanded={this.state.expanded}>
             {Desc}
           </Description>

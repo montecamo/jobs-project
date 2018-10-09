@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Checkbox from './checkbox.jsx';
 import { FilterInput, Dollar } from '../styled-components';
 import { toggleSalaryFilter, changeSalaryFilterAmount } from '../actions/filtersActions';
+import { MIN_SALARY, MAX_SALARY } from '../constants';
 
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -20,6 +21,8 @@ export default class SalaryFilter extends Component {
     let { value } = e.target;
     if (isNaN(+value)) return;
 
+    if (+value > MAX_SALARY) return;
+
     this.props.changeAmount(value);
   }
 
@@ -34,7 +37,12 @@ export default class SalaryFilter extends Component {
         <Checkbox inline={true} innerOnClick={this.toggleFilter}>
           min $
         </Checkbox>
-        <FilterInput theme={theme} placeholder='0' value={amount} onChange={this.onChange} />
+        <FilterInput 
+          theme={theme}
+          placeholder={MIN_SALARY}
+          value={amount}
+          onChange={this.onChange}
+        />
       </div>
     )
   }

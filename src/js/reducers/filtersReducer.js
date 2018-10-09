@@ -1,18 +1,17 @@
 'use strict'
-
 let initialState = {
   minSalary: {
     status: false,
-    amount: '' 
+    amount: '',
   },
   location: {
     status: false,
-    place: ''
+    place: '',
   },
   salaryOnly: false,
   extended: false,
   currentPage: 1,
-  maxPage: 0
+  maxPage: 0,
 }
 
 const filtersReducer = (state=initialState, action) => {
