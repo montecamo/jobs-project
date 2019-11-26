@@ -1,5 +1,4 @@
 'use strict'
-import axios from 'axios';
 import { convertQueryToArr, filterUniqueVacancies, sum, sortByDate } from '../containers/assets';
 import { setMaxPage } from './filtersActions';
 import { setVacanciesFound } from './searchActions';
@@ -32,8 +31,22 @@ export function createGetPromise(query, params, extendedSearch=false) {
   }
 
   params.keywords = query;
+  params.headers = {
+    "Content-Type": "application/x-www-form-urlencoded"
+  };
 
-  return axios.post(`https://cors-anywhere.herokuapp.com/https://us.jooble.org/api/${API_KEY}`, {...params});
+  return fetch(`https://jooble.org/api/${API_KEY}`, {
+    method: 'POST',
+    body: JSON.stringify(params),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded' ,
+    }
+  })
+    .then(res => {
+      if (!res.ok) throw res;
+
+      return res.json();
+    });
 }
 
 export function fetchVacancies(query) {
@@ -53,9 +66,6 @@ export function fetchVacancies(query) {
     dispatch(fetchVacanciesStart());
 
     createGetPromise(query, params, filters.extendedSearch)
-    .then((res) => {
-      return res.data;
-    })
     .then((data) => {
       let totalFound = data.totalCount;
       let totalPages = Math.round(totalFound / JOBS_PER_PAGE);
