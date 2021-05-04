@@ -1,7 +1,7 @@
 'use strict'
 import { setMaxPage } from './filtersActions';
 import { setVacanciesFound } from './searchActions';
-import { API_KEY, APP_ID, JOBS_PER_PAGE, MIN_SALARY } from '../constants';
+import { JOBS_PER_PAGE, MIN_SALARY } from '../constants';
 
 export function fetchVacanciesStart() {
   return {
@@ -24,8 +24,8 @@ export function fetchVacanciesErr() {
 
 export function createGetPromise(query, { location, page, salary }, extendedSearch=false) {
   const searchParams = new URLSearchParams();
-  searchParams.append('app_id', APP_ID);
-  searchParams.append('app_key', API_KEY);
+  searchParams.append('app_id', process.env.APP_ID);
+  searchParams.append('app_key', process.env.APP_KEY);
   searchParams.append('results_per_page', JOBS_PER_PAGE);
   searchParams.append('sort_by', 'date');
 
