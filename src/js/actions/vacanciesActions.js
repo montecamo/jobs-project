@@ -1,8 +1,7 @@
 'use strict'
-import { convertQueryToArr, filterUniqueVacancies, sum, sortByDate } from '../containers/assets';
 import { setMaxPage } from './filtersActions';
 import { setVacanciesFound } from './searchActions';
-import { API_KEY, JOBS_PER_PAGE, MIN_SALARY } from '../constants';
+import { API_KEY, APP_ID, JOBS_PER_PAGE, MIN_SALARY } from '../constants';
 
 export function fetchVacanciesStart() {
   return {
@@ -23,23 +22,30 @@ export function fetchVacanciesErr() {
   }
 }
 
-export function createGetPromise(query, params, extendedSearch=false) {
+export function createGetPromise(query, { location, page, salary }, extendedSearch=false) {
+  const searchParams = new URLSearchParams();
+  searchParams.append('app_id', APP_ID);
+  searchParams.append('app_key', API_KEY);
+  searchParams.append('results_per_page', JOBS_PER_PAGE);
+  searchParams.append('sort_by', 'date');
+
   if (extendedSearch) {
-    params = {...params, searchMode: 3 };
+    searchParams.append('what', query) 
   } else {
-    params = {...params, searchMode: 1 };
+    searchParams.append('title_only', query) 
   }
 
-  params.keywords = query;
-  params.headers = {
-    "Content-Type": "application/x-www-form-urlencoded"
-  };
+  if (location) {
+    searchParams.append('where', location);
+  }
 
-  return fetch(`https://jooble.org/api/${API_KEY}`, {
-    method: 'POST',
-    body: JSON.stringify(params),
+  if (salary) {
+    searchParams.append('salary_min', salary);
+  }
+
+  return fetch(`https://api.adzuna.com/v1/api/jobs/us/search/${page}?${searchParams}`, {
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded' ,
+      'Content-Type': 'application/json'
     }
   })
     .then(res => {
@@ -59,23 +65,18 @@ export function fetchVacancies(query) {
     filters.minSalary.status ? params.salary = filters.minSalary.amount : null;
     filters.location.status ? params.location = filters.location.place : null;
 
-    if (!query && !params.location) {
-      return;
-    }
-
     dispatch(fetchVacanciesStart());
 
     createGetPromise(query, params, filters.extendedSearch)
     .then((data) => {
-      let totalFound = data.totalCount;
+      console.warn('data', data);
+      let totalFound = data.count;
       let totalPages = Math.round(totalFound / JOBS_PER_PAGE);
 
       dispatch(setMaxPage(totalPages));
       dispatch(setVacanciesFound(totalFound));
-      return data.jobs;
-    })
-    .then((vacancies) => {
-      return sortByDate(vacancies, 'updated');
+
+      return data.results;
     })
     .then((vacancies) => {
       dispatch(fetchVacanciesSuccess(vacancies));

@@ -6,7 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 import { 
   Wrapper, Expand, VacancyOffset, VacancyInfo, Salary, Description,
-  DateWrapper, Title 
+  DateWrapper, Title, Dollar
 } from '../styled-components';
 import { convertDate } from '../containers/assets';
 
@@ -32,19 +32,18 @@ export default class Vacancy extends Component {
 
   render() {
     let { theme, vacancy } = this.props;
-    let { title, company, link, updated, location, salary, currency, snippet } = vacancy;
-   
-    let Desc = ReactHtmlParser(snippet);
-    let { month, day } = convertDate(updated, {day: true, month: true});
+    let { title, company, redirect_url, created, location, salary_min: salary, description } = vacancy;
+    
+    let { month, day } = convertDate(created, {day: true, month: true});
 
     return (
       <div>
-        <Title theme={theme} href={link}>{title}</Title>
+        <Title theme={theme} href={redirect_url}>{ReactHtmlParser(title)}</Title>
         <VacancyOffset>
-          <VacancyInfo theme={theme} className='info'>{`${company} - ${location}`}</VacancyInfo>
-          {salary && <Salary className='salary'>{salary}</Salary>}
+          <VacancyInfo theme={theme} className='info'>{`${company.display_name} - ${location.display_name}`}</VacancyInfo>
+          {salary && <Salary className='salary'>{salary}$</Salary>}
           <Description expanded={this.state.expanded}>
-            {Desc}
+            {ReactHtmlParser(description)}
           </Description>
         </VacancyOffset>
         <Wrapper>
